@@ -1,12 +1,13 @@
 import React from "react";
-import AppWrapper from "./AppStyled";
+import Header from "./header/Header";
+import Main from "./main/Main";
 
 const App = () => {
-
   return (
-    <AppWrapper>
-      <h2>BootCamp 5</h2>
-    </AppWrapper>
+    <>
+      <Header />
+      <Main />
+    </>
   );
 };
 
