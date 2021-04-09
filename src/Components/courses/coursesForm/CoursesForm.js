@@ -11,6 +11,22 @@ const initialState = {
 class CoursesForm extends Component {
   state = { ...initialState };
 
+  componentDidMount() {
+    window.addEventListener("keydown", this.handleEsc);
+    if (localStorage.getItem("data")) {
+      this.setState({...JSON.parse(localStorage.getItem("data"))})
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("keydown", this.handleEsc);
+    localStorage.setItem("data", JSON.stringify(this.state));
+  }
+
+  handleEsc = (e) => {
+    if (e.code === "Escape") console.log("Esc");
+  };
+
   onHandleSubmit = (e) => {
     e.preventDefault();
     this.props.addCourse(this.state);
