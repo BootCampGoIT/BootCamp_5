@@ -5,7 +5,7 @@ import {
   addCourseItem,
   deleteCourseItem,
   getCourses,
-} from "../../services/Api";
+} from "../../services/CoursesAPI";
 
 class Courses extends Component {
   state = {

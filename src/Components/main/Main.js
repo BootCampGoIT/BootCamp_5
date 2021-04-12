@@ -1,4 +1,5 @@
 import React from "react";
+import AuthForm from "../auth/AuthForm";
 import Courses from "../courses/Courses";
 
 import { MainContainer } from "./MainStyled";
@@ -6,7 +7,8 @@ import { MainContainer } from "./MainStyled";
 const Main = () => {
   return (
     <MainContainer>
-      <Courses />
+      <AuthForm />
+      {/* <Courses /> */}
     </MainContainer>
   );
 };
