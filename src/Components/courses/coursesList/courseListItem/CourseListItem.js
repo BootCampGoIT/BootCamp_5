@@ -1,6 +1,7 @@
 import React from "react";
 
 const CourseListItem = ({ name, duration, level, id, deleteCourse }) => {
+
   const deleteItem = () => {
     deleteCourse(id);
   };
@@ -18,5 +19,7 @@ const CourseListItem = ({ name, duration, level, id, deleteCourse }) => {
 };
 
 export default CourseListItem;
+
+
 
 
