@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import CoursesForm from "./coursesForm/CoursesForm";
 import CoursesList from "./coursesList/CoursesList";
-import axios from "axios";
 import {
   addCourseItem,
   deleteCourseItem,
@@ -38,25 +37,6 @@ class Courses extends Component {
     } finally {
       this.setState({ isLoading: false });
     }
-  }
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   console.log(this.state.isCourseFormOpen);
-  //   console.log(nextState.isCourseFormOpen);
-  //   if (this.state.isCourseFormOpen !== nextState.isCourseFormOpen) {
-  //     return true;
-  //   } else return false;
-  // }
-
-  componentDidUpdate(prevProps, prevState) {
-    // console.group("componentDidUpdate");
-    // console.log("prevProps", prevProps);
-    // console.log("prevState", prevState);
-    // console.groupEnd();
-    // localStorage.setItem("courses", JSON.stringify(this.state.courses));
-    // if (prevState.courses.length !== this.state.courses.length) {
-    //   localStorage.setItem("courses", JSON.stringify(this.state.courses));
-    // }
   }
 
   addCourse = async (course) => {

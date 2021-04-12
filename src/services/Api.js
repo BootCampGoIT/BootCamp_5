@@ -3,7 +3,7 @@ import axios from "axios";
 const getCourses = async () => {
   try {
     const response = await axios.get(
-      `https://bootcamp5-default-rtdb.firebaseio.com/courses.json`
+      `${process.env.REACT_APP_BASE_URL}/courses.json`
     );
     return response;
   } catch (error) {
@@ -14,7 +14,7 @@ const getCourses = async () => {
 const addCourseItem = async (course) => {
   try {
     const response = await axios.post(
-      `https://bootcamp5-default-rtdb.firebaseio.com/courses.json`,
+      `${process.env.REACT_APP_BASE_URL}/courses.json`,
       course
     );
     return response;
@@ -26,7 +26,7 @@ const addCourseItem = async (course) => {
 const deleteCourseItem = async (id) => {
   try {
     await axios.delete(
-      `https://bootcamp5-default-rtdb.firebaseio.com/courses/${id}.json`
+      `${process.env.REACT_APP_BASE_URL}/courses/${id}.json`
     );
   } catch (error) {
     throw new Error(error);
