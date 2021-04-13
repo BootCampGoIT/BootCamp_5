@@ -1,14 +1,21 @@
 import React from "react";
 import { NavigationContainer } from "./NavigationStyled";
+import { NavLink } from "react-router-dom";
+import { mainRoutes } from "../../routes/mainRoutes";
 
-
-const Navigation = ({routes}) => {
+const Navigation = () => {
   return (
     <NavigationContainer>
       <ul className='navigationList'>
-        {routes.map(({ id, name }) => (
-          <li key={id} className="navigationListItem">
-            <a href={`#${name}`} className="navigationLink">{name}</a>
+        {mainRoutes.map(({ path, name, exact }) => (
+          <li className='navigationListItem' key={path}>
+            <NavLink
+              to={path}
+              exact={exact}
+              className='navigationLink'
+              activeClassName='activeNavigationLink'>
+              {name}
+            </NavLink>
           </li>
         ))}
       </ul>

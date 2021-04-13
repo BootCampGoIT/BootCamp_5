@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { signUp } from "../../services/AuthAPI";
+import { AuthFormContainer } from "./AuthFormStyled";
+import { useLocation } from "react-router-dom";
 
 const AuthForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  // const location = useLocation();
+  // console.log(location);
 
   const onHandleChange = (e) => {
     const { name, value } = e.target;
@@ -25,14 +30,15 @@ const AuthForm = () => {
   };
 
   return (
-    <form onSubmit={onHandleSubmit}>
-      <label>
+    <AuthFormContainer onSubmit={onHandleSubmit} className='authForm'>
+      <label className='authFormLabel'>
         Email:
         <input
           type='text'
           name='email'
           value={email}
           onChange={onHandleChange}
+          className='authFormInput'
         />
       </label>
       <label>
@@ -42,10 +48,13 @@ const AuthForm = () => {
           name='password'
           value={password}
           onChange={onHandleChange}
+          className='authFormInput'
         />
       </label>
-      <button type='submit'>Sign Up</button>
-    </form>
+      <button type='submit' className='authFormButton'>
+        Sign Up
+      </button>
+    </AuthFormContainer>
   );
 };
 

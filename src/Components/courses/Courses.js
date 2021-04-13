@@ -6,6 +6,7 @@ import {
   deleteCourseItem,
   getCourses,
 } from "../../services/CoursesAPI";
+import { NavLink, Route, Switch, withRouter } from "react-router-dom";
 
 class Courses extends Component {
   state = {
@@ -71,17 +72,61 @@ class Courses extends Component {
     const { courses, isLoading, isCourseFormOpen, error } = this.state;
     return (
       <>
-        {isLoading && <h2>...loading</h2>}
-        {error && <h2>{error}</h2>}
-        <button type='button' onClick={this.toggleForm}>
-          {!isCourseFormOpen ? "Open" : "Close"}
-        </button>
-        {isCourseFormOpen && <CoursesForm addCourse={this.addCourse} />}
-        <CoursesList courses={courses} deleteCourse={this.deleteCourse} />
-        {/* <Filter filter={filter} /> */}
+        <ul className='innerNavigationList'>
+          <li className='innerNavigationListItem'>
+            <NavLink
+              to={`${this.props.match.url}/create`}
+              className='innerNavigationLink'
+              activeClassName='activeInnerNavigationLink'>
+              Create
+            </NavLink>
+          </li>
+          <li className='innerNavigationListItem'>
+            <NavLink
+              to={`${this.props.match.url}/list`}
+              className='innerNavigationLink'
+              activeClassName='activeInnerNavigationLink'>
+              List
+            </NavLink>
+          </li>
+        </ul>
+        
+        <Switch>
+          <Route
+            path={`${this.props.match.url}/create`}
+            render={() => <CoursesForm addCourse={this.addCourse} />}
+          />
+
+          <Route
+            path={`${this.props.match.url}/list`}
+            render={() => (
+              <CoursesList courses={courses} deleteCourse={this.deleteCourse} />
+            )}
+          />
+        </Switch>
       </>
     );
   }
 }
 
-export default Courses;
+export default withRouter(Courses);
+
+// const hof = () => () => console.log("Hello");
+
+// const newFunc = hof()();
+
+// function getData() {
+//   return function () {
+//     console.log("first");
+//     return function (data) {
+//       console.log(data);
+//       return function () {
+//         console.log("Hello");
+//       };
+//     };
+//   };
+// }
+
+// const getData = (data) => (newData) => () => console.log(data + " " + newData);
+
+// getData("Hello")("World")();

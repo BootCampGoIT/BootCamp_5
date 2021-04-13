@@ -17,4 +17,7 @@ export const NavigationContainer = styled.nav`
     text-decoration: none;
     text-transform: uppercase;
   }
+  .activeNavigationLink {
+    color: red;
+  }
 `;
